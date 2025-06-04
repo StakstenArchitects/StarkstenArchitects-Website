@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starksten Architects - Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&callback=initMap"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'afacad': ['Afacad', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'wider': '0.02em',
+                        'tighter': '-0.03em',
+                        'custom-5': '0.05em',
+                    },
+                    maxWidth: {
+                        '8xl': '1440px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .nav-item a {
+            position: relative;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover a {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-item.active::after {
+            background-color: #000;
+            width: 100%;
+        }
+        
+        .mobile-nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-nav-item:hover {
+            background-color: rgba(0,0,0,0.02);
+            border-left-color: #000;
+            padding-left: calc(1.25rem + 5px);
+        }
+        
+        .mobile-nav-item:hover a {
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* S Logo Styles */
+        .s-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .s-logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            font-family: 'Afacad', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Footer styles */
+        .footer-container {
+            background-color: white;
+            padding: 24px 44px 24px 44px;
+        }
+
+        .footer-branding-section {
+            display: flex;
+            justify-content: flex-start;
+            padding: 19.2px 0;
+        }
+
+        .footer-middle-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .footer-search-container {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .footer-search-cta-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .footer-social-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-social-icons-container {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #CFCFCF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon-circle:hover {
+            background-color: #f3f4f6;
+        }
+
+        .footer-bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        /* Contact section styles */
+        .contact-info-item {
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .heptagon-container {
+            width: 425.46px;
+            height: 520px;
+            position: relative;
+            transform: rotate(30deg);
+            margin-right: 160px;
+        }
+
+        .heptagon-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: polygon(
+                50% 0%,
+                85% 15%,
+                95% 50%,
+                85% 85%,
+                50% 100%,
+                15% 85%,
+                5% 50%,
+                15% 15%
+            );
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .s-logo {
+                width: 32px;
+                height: 32px;
+                margin-right: 8px;
+            }
+            
+            .s-logo-text {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="font-afacad text-black bg-white w-full overflow-x-hidden">
+    <!-- HEADER CONTAINER -->
+    <header id="header-container" class="border-b border-gray-200 px-8 py-3 h-16 w-full relative">
+        <div id="header-content-wrapper" class="w-full max-w-8xl mx-auto flex justify-between items-center">
+            <!-- HEADER BRANDING CONTAINER -->
+            <div id="header-branding-container" class="flex items-center">
+                <div class="s-logo">
+                    <span class="s-logo-text">S</span>
+                </div>
+                <div class="flex items-baseline">
+                    <h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+                    <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+                </div>
+            </div>
+            
+            <!-- HEADER TAGLINE CONTAINER -->
+            <div id="header-tagline-container" class="text-xl leading-7 tracking-tighter font-normal">
+                Architecture + Interiors + UX Design
+            </div>
+            
+            <!-- DESKTOP NAVIGATION CONTAINER -->
+            <nav id="desktop-nav-container" class="hidden md:flex gap-3 lg:gap-3 flex-wrap">
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Expertise</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Studio</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Projects</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item active">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-medium block w-full">Contact</a>
+                </div>
+            </nav>
+            
+            <!-- HAMBURGER MENU CONTAINER -->
+            <div id="hamburger" class="flex md:hidden flex-col justify-between w-[30px] h-5 cursor-pointer z-50">
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- MOBILE NAVIGATION MENU CONTAINER -->
+    <div id="mobile-nav-container" class="fixed top-0 -right-full w-64 h-screen bg-white z-40 pt-20 pb-5 px-5 shadow-lg transition-all duration-300">
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Expertise</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Studio</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Projects</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200 font-medium">Contact</a>
+        </div>
+    </div>
+    
+    <!-- OVERLAY FOR MOBILE MENU -->
+    <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+    
+    <!-- MAIN CONTENT -->
+    <main class="flex-1">
+        <!-- CONTACT SECTION -->
+        <section class="py-16 px-8">
+            <div class="max-w-8xl mx-auto flex justify-between items-start gap-16">
+                <!-- LEFT CONTAINER - Contact Information -->
+                <div class="contact-info-container">
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Email
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            HELLO@STARKSTENARCHITECTS.COM
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Phone
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            +91 83687 78625
+                        </div>
+                    </div>
+
+                    <!-- Studio -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Studio
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            A2/116A POCKET A 2, SECTOR C,<br>MAYUR VIHAR PHASE III, GHAROLI,<br>NEW DELHI, DELHI 110096 INDIA
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Social
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            INSTAGRAM<br>FACEBOOK<br>DRIBBLE<br>BEHANCE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT CONTAINER - Google Maps with Heptagon Shape -->
+                <div class="heptagon-container">
+                    <div id="map" class="heptagon-image"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER CONTAINER -->
+    <footer id="footer-container" class="footer-container border-t border-gray-200">
+        <!-- FOOTER BRANDING SECTION -->
+        <div id="footer-branding-section" class="footer-branding-section">
+            <div id="footer-branding-content" class="flex items-center">
+                <div class="s-logo">
+                    <span class="s-logo-text">S</span>
+                </div>
+                <div class="flex items-baseline">
+                    <h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+                    <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER MIDDLE SECTION -->
+        <div id="footer-middle-section" class="footer-middle-section">
+            <!-- FOOTER SEARCH CONTAINER -->
+            <div id="footer-search-container" class="footer-search-container">
+                <div id="footer-search-text" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                    Are you looking for something specific
+                </div>
+                <div id="footer-search-cta-container" class="footer-search-cta-container">
+                    <span id="footer-search-cta" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">Search</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F4F4F" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- FOOTER SOCIAL CONTAINER -->
+            <div id="footer-social-container" class="footer-social-container">
+                <!-- FOOTER SOCIAL ICONS CONTAINER -->
+                <div id="footer-social-icons-container" class="footer-social-icons-container">
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4z"></path>
+                            <path d="m10 15 5-3-5-3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- FOOTER BACK TO TOP CONTAINER -->
+                <div id="footer-back-to-top-container" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F; cursor: pointer;" onclick="scrollToTop()">
+                    Back to top
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP STROKE FOR FOOTER BOTTOM SECTION -->
+        <div style="height: 0.4px; background-color: #CFCFCF; width: 100vw; margin-left: -44px;"></div>
+
+        <!-- FOOTER BOTTOM SECTION -->
+        <div id="footer-bottom-section" class="footer-bottom-section">
+            <div id="footer-legal-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Legal and Disclaimer
+            </div>
+            <div id="footer-copyright-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                @2025 Starksten Architects
+            </div>
+            <div id="footer-designer-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Website Design: Vishal Ashokan
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobile-nav-container');
+            const overlay = document.getElementById('overlay');
+            
+            hamburger.addEventListener('click', function() {
+                const spans = this.querySelectorAll('span');
+                
+                if (mobileNav.classList.contains('-right-full')) {
+                    mobileNav.classList.remove('-right-full');
+                    mobileNav.classList.add('right-0');
+                    overlay.classList.remove('hidden');
+                    
+                    // Animate hamburger to X
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                mobileNav.classList.add('-right-full');
+                mobileNav.classList.remove('right-0');
+                this.classList.add('hidden');
+                
+                // Reset hamburger icon
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        });
+
+        // Back to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize Google Map - Light theme
+        function initMap() {
+            // Your office location coordinates
+            const officeLocation = { lat: 28.6220902, lng: 77.2944941 };
+            
+            // Create map with light styling
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: officeLocation,
+                disableDefaultUI: true,
+                zoomControl: true,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "weight": "2.00"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#9c9c9c"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2f2f2"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#46bcec"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    }
+                ]
+            });
+
+            // Create simple custom marker
+            const customMarker = {
+                url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                    <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" fill="#000" stroke="#fff" stroke-width="3"/>
+                        <text x="20" y="26" font-family="Arial, sans-serif" font-size="20" font-weight="700" 
+                              text-anchor="middle" fill="white">S</text>
+                    </svg>
+                `),
+                scaledSize: new google.maps.Size(40, 40),
+                anchor: new google.maps.Point(20, 20)
+            };
+
+            // Add marker to map - no interactions
+            new google.maps.Marker({
+                position: officeLocation,
+                map: map,
+                icon: customMarker,
+                title: 'Starksten Architects'
+            });
+        }
+
+        // Fallback if Google Maps fails to load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof google === 'undefined' || !document.getElementById('map').innerHTML.trim()) {
+                    document.getElementById('map').innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f5f5f5; color: #666; font-family: Afacad, sans-serif; text-align: center; padding: 20px;">
+                            <div>
+                                <div style="width: 60px; height: 60px; border-radius: 50%; background: #000; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                                    <span style="color: white; font-weight: 700; font-size: 32px;">S</span>
+                                </div>
+                                <div style="font-weight: 600; margin-bottom: 8px;">Starksten Architects</div>
+                                <div style="font-size: 14px; line-height: 1.4;">
+                                    A2/116A Pocket A 2, Sector C<br>
+                                    Mayur Vihar Phase III, Gharoli<br>
+                                    New Delhi, Delhi 110096, India
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starksten Architects - Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&callback=initMap"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'afacad': ['Afacad', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'wider': '0.02em',
+                        'tighter': '-0.03em',
+                        'custom-5': '0.05em',
+                    },
+                    maxWidth: {
+                        '8xl': '1440px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .nav-item a {
+            position: relative;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover a {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-item.active::after {
+            background-color: #000;
+            width: 100%;
+        }
+        
+        .mobile-nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-nav-item:hover {
+            background-color: rgba(0,0,0,0.02);
+            border-left-color: #000;
+            padding-left: calc(1.25rem + 5px);
+        }
+        
+        .mobile-nav-item:hover a {
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* S Logo Styles */
+        .s-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .s-logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            font-family: 'Afacad', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Footer styles */
+        .footer-container {
+            background-color: white;
+            padding: 24px 44px 24px 44px;
+        }
+
+        .footer-branding-section {
+            display: flex;
+            justify-content: flex-start;
+            padding: 19.2px 0;
+        }
+
+        .footer-middle-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .footer-search-container {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .footer-search-cta-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .footer-social-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-social-icons-container {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #CFCFCF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon-circle:hover {
+            background-color: #f3f4f6;
+        }
+
+        .footer-bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        /* Contact section styles */
+        .contact-info-item {
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .heptagon-container {
+            width: 425.46px;
+            height: 520px;
+            position: relative;
+            transform: rotate(30deg);
+            margin-right: 160px;
+        }
+
+        .heptagon-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: polygon(
+                50% 0%,
+                85% 15%,
+                95% 50%,
+                85% 85%,
+                50% 100%,
+                15% 85%,
+                5% 50%,
+                15% 15%
+            );
+        }
+
+        /* Form Styles */
+        .form-field {
+            font-family: 'Afacad', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            color: #626262;
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            padding: 14px 10px;
+            height: 52px;
+            box-sizing: border-box;
+        }
+
+        .form-field::placeholder {
+            color: #626262;
+        }
+
+        .form-field:focus {
+            outline: none;
+        }
+
+        .form-container-small {
+            width: 297px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-container-large {
+            width: 610px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-container-textarea {
+            width: 610px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-textarea {
+            font-family: 'Afacad', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            color: #626262;
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            padding: 14px 10px;
+            height: 100%;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        .form-textarea::placeholder {
+            color: #626262;
+        }
+
+        .send-enquiry-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #fff;
+            color: #fff;
+            font-family: 'Afacad', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .send-enquiry-btn:hover {
+            border-bottom-color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .s-logo {
+                width: 32px;
+                height: 32px;
+                margin-right: 8px;
+            }
+            
+            .s-logo-text {
+                font-size: 20px;
+            }
+
+            .form-container-small,
+            .form-container-large,
+            .form-container-textarea {
+                width: 100%;
+            }
+
+            .contact-info-container {
+                margin-bottom: 32px;
+            }
+
+            .heptagon-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-afacad text-black bg-white w-full overflow-x-hidden">
+    <!-- HEADER CONTAINER -->
+    <header id="header-container" class="border-b border-gray-200 px-8 py-3 h-16 w-full relative">
+        <div id="header-content-wrapper" class="w-full max-w-8xl mx-auto flex justify-between items-center">
+            <!-- HEADER BRANDING CONTAINER -->
+            <div id="header-branding-container" class="flex items-center">
+                <div class="s-logo">
+                    <span class="s-logo-text">S</span>
+                </div>
+                <div class="flex items-baseline">
+                    <h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+                    <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+                </div>
+            </div>
+            
+            <!-- HEADER TAGLINE CONTAINER -->
+            <div id="header-tagline-container" class="text-xl leading-7 tracking-tighter font-normal">
+                Architecture + Interiors + UX Design
+            </div>
+            
+            <!-- DESKTOP NAVIGATION CONTAINER -->
+            <nav id="desktop-nav-container" class="hidden md:flex gap-3 lg:gap-3 flex-wrap">
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Expertise</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Studio</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Projects</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item active">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-medium block w-full">Contact</a>
+                </div>
+            </nav>
+            
+            <!-- HAMBURGER MENU CONTAINER -->
+            <div id="hamburger" class="flex md:hidden flex-col justify-between w-[30px] h-5 cursor-pointer z-50">
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- MOBILE NAVIGATION MENU CONTAINER -->
+    <div id="mobile-nav-container" class="fixed top-0 -right-full w-64 h-screen bg-white z-40 pt-20 pb-5 px-5 shadow-lg transition-all duration-300">
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Expertise</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Studio</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Projects</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200 font-medium">Contact</a>
+        </div>
+    </div>
+    
+    <!-- OVERLAY FOR MOBILE MENU -->
+    <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+    
+    <!-- MAIN CONTENT -->
+    <main class="flex-1">
+        <!-- CONTACT SECTION -->
+        <section class="py-16 px-8">
+            <div class="max-w-8xl mx-auto flex justify-between items-start gap-16">
+                <!-- LEFT CONTAINER - Contact Information -->
+                <div class="contact-info-container">
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Email
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            HELLO@STARKSTENARCHITECTS.COM
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Phone
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            +91 83687 78625
+                        </div>
+                    </div>
+
+                    <!-- Studio -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Studio
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            A2/116A POCKET A 2, SECTOR C,<br>MAYUR VIHAR PHASE III, GHAROLI,<br>NEW DELHI, DELHI 110096 INDIA
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Social
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            INSTAGRAM<br>FACEBOOK<br>DRIBBLE<br>BEHANCE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT CONTAINER - Google Maps with Heptagon Shape -->
+                <div class="heptagon-container">
+                    <div id="map" class="heptagon-image"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT FORM SECTION -->
+        <section class="py-16 px-8" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 1920 1080%22><defs><linearGradient id=%22bg%22 x1=%220%22 y1=%220%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23f8f9fa%22/><stop offset=%22100%25%22 style=%22stop-color:%23e9ecef%22/></linearGradient></defs><rect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23bg)%22/></svg>'); background-size: cover; background-position: center;">
+            <div class="max-w-8xl mx-auto">
+                <form id="contactForm" class="flex flex-col gap-4">
+                    <!-- First Row - Full Name and Surname -->
+                    <div class="flex gap-4">
+                        <div class="form-container-small">
+                            <input type="text" class="form-field" placeholder="Full Name" name="fullName" required>
+                        </div>
+                        <div class="form-container-small">
+                            <input type="text" class="form-field" placeholder="Surname" name="surname" required>
+                        </div>
+                    </div>
+
+                    <!-- Second Row - Email -->
+                    <div class="form-container-large">
+                        <input type="email" class="form-field" placeholder="Email" name="email" required>
+                    </div>
+
+                    <!-- Third Row - Phone -->
+                    <div class="form-container-large">
+                        <input type="tel" class="form-field" placeholder="Phone" name="phone" required>
+                    </div>
+
+                    <!-- Fourth Row - Enquiry Type -->
+                    <div class="form-container-large">
+                        <input type="text" class="form-field" placeholder="Enquiry Type" name="enquiryType" required>
+                    </div>
+
+                    <!-- Fifth Row - Message -->
+                    <div class="form-container-textarea">
+                        <textarea class="form-textarea" placeholder="Type your message..." name="message" required></textarea>
+                    </div>
+
+                    <!-- Send Enquiry Button -->
+                    <div class="mt-4">
+                        <button type="submit" class="send-enquiry-btn">
+                            Send Enquiry
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7,7 17,7 17,17"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER CONTAINER -->
+    <footer id="footer-container" class="footer-container border-t border-gray-200">
+        <!-- FOOTER BRANDING SECTION -->
+        <div id="footer-branding-section" class="footer-branding-section">
+            <div id="footer-branding-content" class="flex items-center">
+                <div class="s-logo">
+                    <span class="s-logo-text">S</span>
+                </div>
+                <div class="flex items-baseline">
+                    <h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+                    <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER MIDDLE SECTION -->
+        <div id="footer-middle-section" class="footer-middle-section">
+            <!-- FOOTER SEARCH CONTAINER -->
+            <div id="footer-search-container" class="footer-search-container">
+                <div id="footer-search-text" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                    Are you looking for something specific
+                </div>
+                <div id="footer-search-cta-container" class="footer-search-cta-container">
+                    <span id="footer-search-cta" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">Search</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F4F4F" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- FOOTER SOCIAL CONTAINER -->
+            <div id="footer-social-container" class="footer-social-container">
+                <!-- FOOTER SOCIAL ICONS CONTAINER -->
+                <div id="footer-social-icons-container" class="footer-social-icons-container">
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4z"></path>
+                            <path d="m10 15 5-3-5-3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- FOOTER BACK TO TOP CONTAINER -->
+                <div id="footer-back-to-top-container" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F; cursor: pointer;" onclick="scrollToTop()">
+                    Back to top
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP STROKE FOR FOOTER BOTTOM SECTION -->
+        <div style="height: 0.4px; background-color: #CFCFCF; width: 100vw; margin-left: -44px;"></div>
+
+        <!-- FOOTER BOTTOM SECTION -->
+        <div id="footer-bottom-section" class="footer-bottom-section">
+            <div id="footer-legal-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Legal and Disclaimer
+            </div>
+            <div id="footer-copyright-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                @2025 Starksten Architects
+            </div>
+            <div id="footer-designer-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Website Design: Vishal Ashokan
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobile-nav-container');
+            const overlay = document.getElementById('overlay');
+            
+            hamburger.addEventListener('click', function() {
+                const spans = this.querySelectorAll('span');
+                
+                if (mobileNav.classList.contains('-right-full')) {
+                    mobileNav.classList.remove('-right-full');
+                    mobileNav.classList.add('right-0');
+                    overlay.classList.remove('hidden');
+                    
+                    // Animate hamburger to X
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                mobileNav.classList.add('-right-full');
+                mobileNav.classList.remove('right-0');
+                this.classList.add('hidden');
+                
+                // Reset hamburger icon
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Create mailto link
+                const subject = `New Enquiry from ${data.fullName} ${data.surname}`;
+                const body = `Full Name
+
+
+
+
+
+
+
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starksten Architects - Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&callback=initMap"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'afacad': ['Afacad', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'wider': '0.02em',
+                        'tighter': '-0.03em',
+                        'custom-5': '0.05em',
+                    },
+                    maxWidth: {
+                        '8xl': '1440px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .nav-item a {
+            position: relative;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover a {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-item.active::after {
+            background-color: #000;
+            width: 100%;
+        }
+        
+        .mobile-nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-nav-item:hover {
+            background-color: rgba(0,0,0,0.02);
+            border-left-color: #000;
+            padding-left: calc(1.25rem + 5px);
+        }
+        
+        .mobile-nav-item:hover a {
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* S Logo Styles */
+        .s-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .s-logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            font-family: 'Afacad', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Footer styles */
+        .footer-container {
+            background-color: white;
+            padding: 24px 44px 24px 44px;
+        }
+
+        .footer-branding-section {
+            display: flex;
+            justify-content: flex-start;
+            padding: 19.2px 0;
+        }
+
+        .footer-middle-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .footer-search-container {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .footer-search-cta-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .footer-social-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-social-icons-container {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #CFCFCF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon-circle:hover {
+            background-color: #f3f4f6;
+        }
+
+        .footer-bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        /* Contact section styles */
+        .contact-info-item {
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .heptagon-container {
+            width: 425.46px;
+            height: 520px;
+            position: relative;
+            transform: rotate(30deg);
+            margin-right: 160px;
+        }
+
+        .heptagon-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: polygon(
+                50% 0%,
+                85% 15%,
+                95% 50%,
+                85% 85%,
+                50% 100%,
+                15% 85%,
+                5% 50%,
+                15% 15%
+            );
+        }
+
+        /* Form Styles */
+        .form-field {
+            font-family: 'Afacad', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            color: #626262;
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            padding: 14px 10px;
+            height: 52px;
+            box-sizing: border-box;
+        }
+
+        .form-field::placeholder {
+            color: #626262;
+        }
+
+        .form-field:focus {
+            outline: none;
+        }
+
+        .form-container-small {
+            width: 297px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-container-large {
+            width: 610px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-container-textarea {
+            width: 610px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-textarea {
+            font-family: 'Afacad', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            color: #626262;
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            padding: 14px 10px;
+            height: 100%;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        .form-textarea::placeholder {
+            color: #626262;
+        }
+
+        .send-enquiry-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #000;
+            color: #000;
+            font-family: 'Afacad', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .send-enquiry-btn:hover {
+            border-bottom-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .s-logo {
+                width: 32px;
+                height: 32px;
+                margin-right: 8px;
+            }
+            
+            .s-logo-text {
+                font-size: 20px;
+            }
+
+            .form-container-small,
+            .form-container-large,
+            .form-container-textarea {
+                width: 100%;
+            }
+
+            .contact-info-container {
+                margin-bottom: 32px;
+            }
+
+            .heptagon-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-afacad text-black bg-white w-full overflow-x-hidden">
+    <!-- HEADER CONTAINER -->
+    <header id="header-container" class="border-b border-gray-200 px-8 py-3 h-16 w-full relative">
+        <div id="header-content-wrapper" class="w-full max-w-8xl mx-auto flex justify-between items-center">
+            <!-- HEADER BRANDING CONTAINER -->
+            <div id="header-branding-container" class="flex items-center">
+                <div class="s-logo">
+                    <span class="s-logo-text">S</span>
+                </div>
+                <div class="flex items-baseline">
+                    <h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+                    <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+                </div>
+            </div>
+            
+            <!-- HEADER TAGLINE CONTAINER -->
+            <div id="header-tagline-container" class="text-xl leading-7 tracking-tighter font-normal">
+                Architecture + Interiors + UX Design
+            </div>
+            
+            <!-- DESKTOP NAVIGATION CONTAINER -->
+            <nav id="desktop-nav-container" class="hidden md:flex gap-3 lg:gap-3 flex-wrap">
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Expertise</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Studio</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-normal block w-full">Projects</a>
+                </div>
+                <div class="w-[90px] px-2 text-center nav-item active">
+                    <a href="#" class="text-xl leading-7 tracking-tighter font-medium block w-full">Contact</a>
+                </div>
+            </nav>
+            
+            <!-- HAMBURGER MENU CONTAINER -->
+            <div id="hamburger" class="flex md:hidden flex-col justify-between w-[30px] h-5 cursor-pointer z-50">
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+                <span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- MOBILE NAVIGATION MENU CONTAINER -->
+    <div id="mobile-nav-container" class="fixed top-0 -right-full w-64 h-screen bg-white z-40 pt-20 pb-5 px-5 shadow-lg transition-all duration-300">
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Expertise</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Studio</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200">Projects</a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#" class="block py-4 text-xl no-underline text-black border-b border-gray-200 font-medium">Contact</a>
+        </div>
+    </div>
+    
+    <!-- OVERLAY FOR MOBILE MENU -->
+    <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+    
+    <!-- MAIN CONTENT -->
+    <main class="flex-1">
+        <!-- CONTACT SECTION -->
+        <section class="py-16 px-8">
+            <div class="max-w-8xl mx-auto flex justify-between items-start gap-16">
+                <!-- LEFT CONTAINER - Contact Information -->
+                <div class="contact-info-container">
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Email
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            HELLO@STARKSTENARCHITECTS.COM
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Phone
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            +91 83687 78625
+                        </div>
+                    </div>
+
+                    <!-- Studio -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Studio
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            A2/116A POCKET A 2, SECTOR C,<br>MAYUR VIHAR PHASE III, GHAROLI,<br>NEW DELHI, DELHI 110096 INDIA
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="contact-info-item">
+                        <div style="font-family: Afacad; font-weight: 400; font-size: 20px; line-height: 30px; letter-spacing: 0.02em; color: #222222; margin: 0; padding: 0;">
+                            Social
+                        </div>
+                        <div style="font-family: Afacad; font-weight: 600; font-size: 42px; line-height: 58px; letter-spacing: 0.05em; color: #222222; margin: 0; padding: 0;">
+                            INSTAGRAM<br>FACEBOOK<br>DRIBBLE<br>BEHANCE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT CONTAINER - Google Maps with Heptagon Shape -->
+                <div class="heptagon-container">
+                    <div id="map" class="heptagon-image"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT FORM SECTION -->
+        <section class="py-16 px-8" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 1920 1080%22><defs><linearGradient id=%22bg%22 x1=%220%22 y1=%220%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23f8f9fa%22/><stop offset=%22100%25%22 style=%22stop-color:%23e9ecef%22/></linearGradient></defs><rect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23bg)%22/></svg>'); background-size: cover; background-position: center;">
+            <div class="max-w-8xl mx-auto">
+                <form id="contactForm" class="flex flex-col gap-4">
+                    <!-- First Row - Full Name and Surname -->
+                    <div class="flex gap-4">
+                        <div class="form-container-small">
+                            <input type="text" class="form-field" placeholder="Full Name" name="fullName" required>
+                        </div>
+                        <div class="form-container-small">
+                            <input type="text" class="form-field" placeholder="Surname" name="surname" required>
+                        </div>
+                    </div>
+
+                    <!-- Second Row - Email -->
+                    <div class="form-container-large">
+                        <input type="email" class="form-field" placeholder="Email" name="email" required>
+                    </div>
+
+                    <!-- Third Row - Phone -->
+                    <div class="form-container-large">
+                        <input type="tel" class="form-field" placeholder="Phone" name="phone" required>
+                    </div>
+
+                    <!-- Fourth Row - Enquiry Type -->
+                    <div class="form-container-large">
+                        <input type="text" class="form-field" placeholder="Enquiry Type" name="enquiryType" required>
+                    </div>
+
+                    <!-- Fifth Row - Message -->
+                    <div class="form-container-textarea">
+                        <textarea class="form-textarea" placeholder="Type your message..." name="message" required></textarea>
+                    </div>
+
+                    <!-- Send Enquiry Button -->
+                    <div class="mt-4">
+                        <button type="submit" class="send-enquiry-btn">
+                            Send Enquiry
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7,7 17,7 17,17"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER CONTAINER -->
+    <footer id="footer-container" class="footer-container border-t border-gray-200">
+        <!-- FOOTER BRANDING SECTION -->
+        <div id="footer-branding-section" class="footer-branding-section">
+            <div id="footer-branding-content" class="flex items-center">
+                <div class="s-logo">
+                    <span class="s-logo-text">S</span>
+                </div>
+                <div class="flex items-baseline">
+                    <h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+                    <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER MIDDLE SECTION -->
+        <div id="footer-middle-section" class="footer-middle-section">
+            <!-- FOOTER SEARCH CONTAINER -->
+            <div id="footer-search-container" class="footer-search-container">
+                <div id="footer-search-text" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                    Are you looking for something specific
+                </div>
+                <div id="footer-search-cta-container" class="footer-search-cta-container">
+                    <span id="footer-search-cta" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">Search</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F4F4F" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- FOOTER SOCIAL CONTAINER -->
+            <div id="footer-social-container" class="footer-social-container">
+                <!-- FOOTER SOCIAL ICONS CONTAINER -->
+                <div id="footer-social-icons-container" class="footer-social-icons-container">
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4z"></path>
+                            <path d="m10 15 5-3-5-3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- FOOTER BACK TO TOP CONTAINER -->
+                <div id="footer-back-to-top-container" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F; cursor: pointer;" onclick="scrollToTop()">
+                    Back to top
+                </div>
+            </div>
+        </div>
+
+        <!-- TOP STROKE FOR FOOTER BOTTOM SECTION -->
+        <div style="height: 0.4px; background-color: #CFCFCF; width: 100vw; margin-left: -44px;"></div>
+
+        <!-- FOOTER BOTTOM SECTION -->
+        <div id="footer-bottom-section" class="footer-bottom-section">
+            <div id="footer-legal-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Legal and Disclaimer
+            </div>
+            <div id="footer-copyright-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                @2025 Starksten Architects
+            </div>
+            <div id="footer-designer-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Website Design: Vishal Ashokan
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Google Maps
+        function initMap() {
+            const location = { lat: 28.6139, lng: 77.2090 }; // New Delhi coordinates
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: location,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"weight": "2.00"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#9c9c9c"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text",
+                        "stylers": [{"visibility": "on"}]
+                    }
+                ]
+            });
+            
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: "Starksten Architects"
+            });
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobile-nav-container');
+            const overlay = document.getElementById('overlay');
+            
+            hamburger.addEventListener('click', function() {
+                const spans = this.querySelectorAll('span');
+                
+                if (mobileNav.classList.contains('-right-full')) {
+                    mobileNav.classList.remove('-right-full');
+                    mobileNav.classList.add('right-0');
+                    overlay.classList.remove('hidden');
+                    
+                    // Animate hamburger to X
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                mobileNav.classList.add('-right-full');
+                mobileNav.classList.remove('right-0');
+                this.classList.add('hidden');
+                
+                // Reset hamburger icon
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Create mailto link
+                const subject = encodeURIComponent(`New Enquiry from ${data.fullName} ${data.surname}`);
+                const body = encodeURIComponent(`
+Full Name: ${data.fullName}
+Surname: ${data.surname}
+Email: ${data.email}
+Phone: ${data.phone}
+Enquiry Type: ${data.enquiryType}
+Message: ${data.message}
+                `);
+                
+                const mailtoLink = `mailto:prakriti13vishal@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = mailtoLink;
+                
+                // Optional: Show success message
+                alert('Your enquiry has been sent successfully!');
+                
+                // Reset form
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

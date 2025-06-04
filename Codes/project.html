@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Starksten Architects - Projects</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'afacad': ['Afacad', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'wider': '0.02em',
+                        'tighter': '-0.03em',
+                    },
+                    maxWidth: {
+                        '8xl': '1440px',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .nav-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .nav-item a {
+            position: relative;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover a {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-item.active::after {
+            background-color: #000;
+            width: 100%;
+        }
+        
+        .mobile-nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-nav-item:hover {
+            background-color: rgba(0,0,0,0.02);
+            border-left-color: #000;
+            padding-left: calc(1.25rem + 5px);
+        }
+        
+        .mobile-nav-item:hover a {
+            color: #000;
+            font-weight: 500;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 440px;
+            height: 220px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Filter section styles */
+        .filter-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .filter-section.open {
+            max-height: 400px;
+        }
+
+        /* Selected filter pills */
+        .selected-filter {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 2px 4px;
+            margin: 2px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .selected-filter .filter-checkbox {
+            width: 10px;
+            height: 10px;
+            background-color: #000;
+            border-radius: 1px;
+            margin-right: 8px;
+            position: relative;
+        }
+
+        .selected-filter .filter-checkbox::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 6px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        /* Filter section checkboxes */
+        .filter-checkbox-container {
+            width: 16px;
+            height: 16px;
+            position: relative;
+            margin-right: 16px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .filter-checkbox-inner {
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            border-radius: 1px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .filter-checkbox-container.checked .filter-checkbox-inner {
+            opacity: 1;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            width: 120px; /* Fixed width for all checkboxes */
+        }
+
+        .filter-option:hover {
+            background-color: #f9fafb;
+        }
+
+        .filter-header {
+            width: 375px;
+            padding: 10px 16px;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 40px;
+            border-bottom: 1px solid #000;
+            flex-shrink: 0;
+        }
+
+        .filter-options-container {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px 16px;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid #000;
+        }
+
+        .filter-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive lines with 40px padding */
+        .responsive-line {
+            height: 0.4px;
+            background-color: rgb(156, 163, 175);
+            margin: 0 40px;
+        }
+
+        /* Footer styles */
+        .footer-container {
+            background-color: white;
+            padding: 0 44px;
+        }
+
+        .footer-branding-section {
+            display: flex;
+            justify-content: center;
+            padding: 24px 0;
+        }
+
+        .footer-middle-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .footer-search-container {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .footer-search-cta-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-social-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-social-icons-container {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon-circle {
+            width: 34px;
+            height: 34px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon-circle:hover {
+            background-color: #d1d5db;
+        }
+
+        .footer-bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .projects-grid-container {
+            padding: 0 44px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .projects-row {
+            display: flex;
+            justify-content: space-between;
+        }
+    #search-section-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+#search-section-container.open {
+  max-height: 200px;
+}
+    .filter-row {
+        display: flex;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid #000;
+        background-color: #f3f4f6;
+    }
+
+    .filter-row:last-child {
+        border-bottom: none;
+    }
+
+    .filter-header {
+        width: 160px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+        padding-right: 24px;
+        flex-shrink: 0;
+    }
+
+    .filter-options-container {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    .filter-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+        cursor: pointer;
+    }
+
+    .filter-checkbox-container {
+        width: 14px;
+        height: 14px;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .filter-checkbox-inner {
+        width: 8px;
+        height: 8px;
+        background-color: #000;
+    }
+
+    .filter-checkbox-container:not(.checked) .filter-checkbox-inner {
+        display: none;
+    }
+    </style>
+</head>
+<body class="font-afacad text-black bg-white w-full overflow-x-hidden">
+<!-- HEADER CONTAINER -->
+<header class="border-b border-gray-200 px-8 py-3 h-16 w-full relative" id="header-container">
+<div class="w-full max-w-8xl mx-auto flex justify-between items-center" id="header-content-wrapper">
+<!-- HEADER BRANDING CONTAINER -->
+<div class="flex items-baseline" id="header-branding-container">
+<h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+<span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+</div>
+<!-- HEADER TAGLINE CONTAINER -->
+<div class="text-xl leading-7 tracking-tighter font-normal" id="header-tagline-container">
+                Architecture + Interiors + UX Design
+            </div>
+<!-- DESKTOP NAVIGATION CONTAINER -->
+<nav class="hidden md:flex gap-3 lg:gap-3 flex-wrap" id="desktop-nav-container">
+<div class="w-[90px] px-2 text-center nav-item">
+<a class="text-xl leading-7 tracking-tighter font-normal block w-full" href="#">Expertise</a>
+</div>
+<div class="w-[90px] px-2 text-center nav-item">
+<a class="text-xl leading-7 tracking-tighter font-normal block w-full" href="#">Studio</a>
+</div>
+<div class="w-[90px] px-2 text-center nav-item active">
+<a class="text-xl leading-7 tracking-tighter font-medium block w-full" href="#">Projects</a>
+</div>
+<div class="w-[90px] px-2 text-center nav-item">
+<a class="text-xl leading-7 tracking-tighter font-normal block w-full" href="#">Contact</a>
+</div>
+</nav>
+<!-- HAMBURGER MENU CONTAINER -->
+<div class="flex md:hidden flex-col justify-between w-[30px] h-5 cursor-pointer z-50" id="hamburger">
+<span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+<span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+<span class="block h-[3px] w-full bg-black transition-all duration-300"></span>
+</div>
+</div>
+</header>
+<!-- MOBILE NAVIGATION MENU CONTAINER -->
+<div class="fixed top-0 -right-full w-64 h-screen bg-white z-40 pt-20 pb-5 px-5 shadow-lg transition-all duration-300" id="mobile-nav-container">
+<div class="mobile-nav-item">
+<a class="block py-4 text-xl no-underline text-black border-b border-gray-200" href="#">Expertise</a>
+</div>
+<div class="mobile-nav-item">
+<a class="block py-4 text-xl no-underline text-black border-b border-gray-200" href="#">Studio</a>
+</div>
+<div class="mobile-nav-item">
+<a class="block py-4 text-xl no-underline text-black border-b border-gray-200 font-medium" href="#">Projects</a>
+</div>
+<div class="mobile-nav-item">
+<a class="block py-4 text-xl no-underline text-black border-b border-gray-200" href="#">Contact</a>
+</div>
+</div>
+<!-- OVERLAY FOR MOBILE MENU -->
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden" id="overlay"></div>
+<main id="main-container">
+<!-- HERO SECTION CONTAINER -->
+<section class="flex p-6 md:p-12 justify-between flex-wrap" id="hero-section-container">
+<div class="self-start" id="hero-title-container">
+<h2 class="text-6xl md:text-7xl font-normal leading-tight md:leading-[100px] tracking-tighter">We create spaces</h2>
+</div>
+<div class="w-full lg:max-w-[605px]" id="hero-content-container">*
+<div class="text-4xl leading-[62px] tracking-wider font-semibold mb-2">145</div>
+<p class="text-2xl leading-8 tracking-tighter font-normal text-gray-700">
+                    We design innovative and meticulously crafted spaces that 
+                    blend functionality, aesthetics, and expertise to create 
+                    timeless environments.
+                </p>
+</div>
+</section>
+<div class="responsive-line"></div>
+<!-- FILTER CONTROLS SECTION CONTAINER -->
+<section class="py-6" id="filter-controls-section">
+<div class="w-full max-w-8xl mx-auto px-8 flex items-center justify-between flex-wrap" id="filter-controls-wrapper">
+<div class="flex gap-2 flex-wrap py-1" id="selected-filters-container">
+<!-- Selected filters will appear here dynamically -->
+</div>
+<div class="flex gap-4 items-center py-1" id="filter-buttons-container">
+<button id="search-toggle-button" class="max-w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer rounded">
+  <img src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\icons\Search_projects.svg" alt="Search Icon" class="w-8 h-8">
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer rounded" id="filter-toggle-button">
+  <img src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\icons\Filter_projects.svg" alt="Filter" class="w-8 h-8">
+</button>
+</div>
+</div>
+</section>
+<!-- FILTER SECTION CONTAINER -->
+<div class="filter-section bg-gray-50" id="filter-section-container">
+<div class="w-full max-w-8xl mx-auto" id="filter-section-wrapper">
+<!-- DISCIPLINE FILTER ROW -->
+<div class="filter-row">
+<div class="filter-header" id="discipline-filter-header">
+                        Discipline
+                    </div>
+<div class="filter-options-container" id="discipline-filter-options">
+<div class="filter-option" data-category="discipline" data-value="Residential">
+<div class="filter-checkbox-container checked">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Residential</span>
+</div>
+<div class="filter-option" data-category="discipline" data-value="UX Design">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">UX Design</span>
+</div>
+<div class="filter-option" data-category="discipline" data-value="Interiors">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Interiors</span>
+</div>
+<div class="filter-option" data-category="discipline" data-value="Workspace">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Workspace</span>
+</div>
+<div class="filter-option" data-category="discipline" data-value="Hospitality">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Hospitality</span>
+</div>
+<div class="filter-option" data-category="discipline" data-value="Landscape">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Landscape</span>
+</div>
+</div>
+</div>
+<!-- STATUS FILTER ROW -->
+<div class="filter-row">
+<div class="filter-header" id="status-filter-header">
+                        Status
+                    </div>
+<div class="filter-options-container" id="status-filter-options">
+<div class="filter-option" data-category="status" data-value="Completed">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Completed</span>
+</div>
+<div class="filter-option" data-category="status" data-value="On Going">
+<div class="filter-checkbox-container checked">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">On Going</span>
+</div>
+</div>
+</div>
+<!-- REGION FILTER ROW -->
+<div class="filter-row">
+<div class="filter-header" id="region-filter-header">
+                        Region
+                    </div>
+<div class="filter-options-container" id="region-filter-options">
+<div class="filter-option" data-category="region" data-value="New Delhi">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">New Delhi</span>
+</div>
+<div class="filter-option" data-category="region" data-value="Mumbai">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Mumbai</span>
+</div>
+<div class="filter-option" data-category="region" data-value="Pune">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Pune</span>
+</div>
+<div class="filter-option" data-category="region" data-value="Chennai">
+<div class="filter-checkbox-container">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Chennai</span>
+</div>
+<div class="filter-option" data-category="region" data-value="Gurgaon">
+<div class="filter-checkbox-container checked">
+<div class="filter-checkbox-inner"></div>
+</div>
+<span class="text-lg leading-[34px]">Gurgaon</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="responsive-line"></div>
+<!-- PROJECTS SECTION CONTAINER -->
+<div class="filter-section bg-gray-50" id="search-section-container">
+<div class="w-full max-w-8xl mx-auto p-4">
+<input class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black text-lg" id="project-search-input" placeholder="Search projects..." type="text"/>
+</div>
+</div>
+<section class="py-10" id="projects-section-container">
+<div class="projects-grid-container" id="projects-grid-container">
+<!-- FIRST ROW OF PROJECTS -->
+<div class="projects-row">
+<!-- Project 1 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-1">
+<img alt="Modern apartment interior with large windows" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\1.png"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Nirvana Residence</h3>
+<p class="text-base font-normal">Gurgaon</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-2">
+<img alt="Aerial view of modern house in forest" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\2.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Forest Retreat</h3>
+<p class="text-base font-normal">Mumbai</p>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-3">
+<img alt="Wooden ceiling modern home" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\3.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Lakeside Villa</h3>
+<p class="text-base font-normal">Indore</p>
+</div>
+</div>
+</div>
+<!-- SECOND ROW OF PROJECTS -->
+<div class="projects-row">
+<!-- Project 4 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-4">
+<img alt="Night view of residential building" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\4.jpgC:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\4.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Urban Oasis</h3>
+<p class="text-base font-normal">Delhi</p>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-5">
+<img alt="Modern concrete architecture" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\5.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Concrete Haven</h3>
+<p class="text-base font-normal">Pune</p>
+</div>
+</div>
+<!-- Project 6 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-6">
+<img alt="Hillside modern residence" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\6.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Hillside Residence</h3>
+<p class="text-base font-normal">Shimla</p>
+</div>
+</div>
+</div>
+<!-- THIRD ROW OF PROJECTS -->
+<div class="projects-row">
+<!-- Project 7 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-7">
+<img alt="Contemporary villa design" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\7.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Contemporary Villa</h3>
+<p class="text-base font-normal">Bangalore</p>
+</div>
+</div>
+<!-- Project 8 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-8">
+<img alt="Minimalist house design" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\8.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Minimalist House</h3>
+<p class="text-base font-normal">Hyderabad</p>
+</div>
+</div>
+<!-- Project 9 -->
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-9">
+<img alt="Garden view residence" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\Images\projects\9.jpg"/>
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+<h3 class="text-2xl font-medium mb-1">Garden Residence</h3>
+<p class="text-base font-normal">Kolkata</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER CONTAINER -->
+<!-- FOOTER CONTAINER -->
+<footer class="footer-container border-t border-gray-200" id="footer-container">
+<!-- FOOTER BRANDING SECTION -->
+<div class="footer-branding-section" id="footer-branding-section" style="justify-content: flex-start;">
+<div class="flex items-baseline" id="footer-branding-content">
+<h1 class="font-bold text-3xl leading-10 tracking-wider mr-2">Starksten</h1>
+<span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
+</div>
+</div>
+<!-- FOOTER MIDDLE SECTION -->
+<div class="footer-middle-section" id="footer-middle-section">
+<!-- FOOTER SEARCH CONTAINER -->
+<div class="footer-search-container" id="footer-search-container">
+<div id="footer-search-text" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+                Are you looking for something specific
+            </div>
+<div class="footer-search-cta-container" id="footer-search-cta-container">
+<span id="footer-search-cta" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">Search</span>
+<svg fill="none" height="16" stroke="#4F4F4F" stroke-width="2" viewbox="0 0 24 24" width="16">
+<circle cx="11" cy="11" r="8"></circle>
+<path d="m21 21-4.35-4.35"></path>
+</svg>
+</div>
+</div>
+<!-- FOOTER SOCIAL CONTAINER -->
+<div class="footer-social-container" id="footer-social-container">
+<!-- FOOTER SOCIAL ICONS CONTAINER -->
+<div class="footer-social-icons-container" id="footer-social-icons-container">
+<div class="social-icon-circle">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14">
+<rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+<path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+<line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+</svg>
+</div>
+<div class="social-icon-circle">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14">
+<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4z"></path>
+<path d="m10 15 5-3-5-3z"></path>
+</svg>
+</div>
+<div class="social-icon-circle">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</div>
+<div class="social-icon-circle">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14">
+<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg>
+</div>
+<div class="social-icon-circle">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14">
+<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+<rect height="12" width="4" x="2" y="9"></rect>
+<circle cx="4" cy="4" r="2"></circle>
+</svg>
+</div>
+</div>
+<!-- FOOTER BACK TO TOP CONTAINER -->
+<div id="footer-back-to-top-container" onclick="scrollToTop()" style="font-size: 16px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F; cursor: pointer;">
+                Back to top
+            </div>
+</div>
+</div>
+<!-- TOP STROKE FOR FOOTER BOTTOM SECTION -->
+<div style="height: 0.4px; background-color: #CFCFCF; width: 100vw; margin-left: -44px;"></div>
+<!-- FOOTER BOTTOM SECTION -->
+<div class="footer-bottom-section" id="footer-bottom-section">
+<div id="footer-legal-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+            Legal and Disclaimer
+        </div>
+<div id="footer-copyright-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+            @2025 Starksten Architects
+        </div>
+<div id="footer-designer-text" style="font-size: 14px; line-height: 28px; letter-spacing: -0.03em; color: #4F4F4F;">
+            Website Design: Vishal Ashokan
+        </div>
+</div>
+</footer>
+<!-- Updated CSS for Footer -->
+<style>
+.footer-container {
+    background-color: white;
+    padding: 24px 44px 24px 44px;
+}
+
+.footer-branding-section {
+    display: flex;
+    justify-content: center;
+    padding: 19.2px 0; /* Reduced from 24px by 20% */
+}
+
+.footer-middle-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+}
+
+.footer-bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+}
+
+.social-icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #CFCFCF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.footer-social-icons-container {
+    display: flex;
+    align-items: center;
+}
+
+.footer-search-cta-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+</style>
+<!-- JavaScript for Back to Top functionality -->
+<script>
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+</script>
+<script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterToggle = document.getElementById('filter-toggle-button');
+            const filterSection = document.getElementById('filter-section-container');
+            const selectedFiltersContainer = document.getElementById('selected-filters-container');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            
+            let selectedFilters = {
+                discipline: ['Residential'],
+                status: ['On Going'],
+                region: ['Gurgaon']
+            };
+
+            // Initialize selected filters display
+            updateSelectedFiltersDisplay();
+
+            // Toggle filter section
+            filterToggle.addEventListener('click', function() {
+                filterSection.classList.toggle('open');
+                
+                // Rotate the filter icon
+                if (filterSection.classList.contains('open')) {
+                    filterToggle.style.transform = 'rotate(90deg)';
+                } else {
+                    filterToggle.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Handle filter option clicks
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    const value = this.dataset.value;
+                    const checkbox = this.querySelector('.filter-checkbox-container');
+                    
+                    if (checkbox.classList.contains('checked')) {
+                        // Uncheck
+                        checkbox.classList.remove('checked');
+                        selectedFilters[category] = selectedFilters[category].filter(item => item !== value);
+                    } else {
+                        // Check
+                        checkbox.classList.add('checked');
+                        if (!selectedFilters[category].includes(value)) {
+                            selectedFilters[category].push(value);
+                        }
+                    }
+                    
+                    updateSelectedFiltersDisplay();
+                });6
+            });
+
+            function updateSelectedFiltersDisplay() {
+                selectedFiltersContainer.innerHTML = '';
+                
+                // Combine all selected filters
+                const allSelected = [];
+                Object.keys(selectedFilters).forEach(category => {
+                    selectedFilters[category].forEach(value => {
+                        allSelected.push({ category, value });
+                    });
+                });
+
+                // Create filter pills
+                allSelected.forEach(filter => {
+                    const pill = document.createElement('div');
+                    pill.className = 'selected-filter';
+                    pill.innerHTML = `
+                        <div class="filter-checkbox"></div>
+                        ${filter.value}
+                    `;
+                    
+                    // Add click handler to remove filter
+                    pill.addEventListener('click', function() {
+                        // Remove from selectedFilters
+                        selectedFilters[filter.category] = selectedFilters[filter.category].filter(item => item !== filter.value);
+                        
+                        // Update checkbox in filter section
+                        const filterOption = document.querySelector(`.filter-option[data-category="${filter.category}"][data-value="${filter.value}"]`);
+                        if (filterOption) {
+                            const checkbox = filterOption.querySelector('.filter-checkbox-container');
+                            checkbox.classList.remove('checked');
+                        }
+                        
+                        updateSelectedFiltersDisplay();
+                    });
+                    
+                    selectedFiltersContainer.appendChild(pill);
+                });
+            }
+            
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobile-nav-container');
+            const overlay = document.getElementById('overlay');
+            
+            hamburger.addEventListener('click', function() {
+                const spans = this.querySelectorAll('span');
+                
+                if (mobileNav.classList.contains('-right-full')) {
+                    mobileNav.classList.remove('-right-full');
+                    mobileNav.classList.add('right-0');
+                    overlay.classList.remove('hidden');
+                    
+                    // Animate hamburger to X
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                mobileNav.classList.add('-right-full');
+                mobileNav.classList.remove('right-0');
+                this.classList.add('hidden');
+                
+                // Reset hamburger icon
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.add('-right-full');
+                    mobileNav.classList.remove('right-0');
+                    overlay.classList.add('hidden');
+                    
+                    // Reset hamburger icon
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+
+            // Back to top functionality
+            const backToTopButton = document.getElementById('footer-back-to-top-container');
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    
+        const searchToggle = document.getElementById('search-toggle-button');
+        const searchSection = document.getElementById('search-section-container');
+
+        searchToggle.addEventListener('click', function () {
+            searchSection.classList.toggle('open');
+            if (searchSection.classList.contains('open')) {
+                searchToggle.style.transform = 'rotate(90deg)';
+            } else {
+                searchToggle.style.transform = 'rotate(0deg)';
+            }
+        });
+        </script>
+</body>
+</html>

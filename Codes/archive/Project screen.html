@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starksten Architects - Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Afacad', sans-serif;
+            color: #000;
+            background-color: #fff;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Navigation */
+        header {
+            border-bottom: 1px solid #e6e6e6;
+            padding: 12px 30px; /* 30px padding on left and right, 12px top/bottom */
+            height: 64px; /* Fixed height as specified */
+            width: 100%;
+            position: relative;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .logo h1 {
+            font-weight: 700; /* Bold as specified */
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: 2%; /* Letter spacing as specified */
+            margin-right: 8px;
+        }
+        
+        .logo span {
+            font-weight: 400;
+            font-style: italic;
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: 2%; /* Letter spacing as specified */
+        }
+        
+        .services {
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: -3%; /* Negative letter spacing as specified */
+            font-weight: 400; /* Regular weight */
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 12px; /* 12px spacing between nav items as specified */
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            width: 90px; /* Fixed width container as specified */
+            padding: 0 8px; /* 8px padding on left and right as specified */
+            text-align: center;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: -3%; /* Negative letter spacing as specified */
+            font-weight: 400; /* Regular weight */
+            display: block;
+            width: 100%;
+            transition: opacity 0.3s ease;
+        }
+        
+        .main-nav a:hover {
+            opacity: 0.7;
+        }
+        
+        .main-nav a.active {
+            font-weight: 700; /* Bold for active item as specified */
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #000;
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 999;
+            padding: 80px 20px 20px;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav a {
+            display: block;
+            padding: 15px 0;
+            font-size: 20px;
+            text-decoration: none;
+            color: #000;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        
+        .mobile-nav a.active {
+            font-weight: 700;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 998;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            padding: 24px 48px; /* Padding as specified */
+            justify-content: space-between; /* Auto spacing between containers */
+            flex-wrap: wrap;
+        }
+        
+        .hero-left {
+            align-self: flex-start; /* Align to top left as specified */
+        }
+        
+        .hero-right {
+            width: 100%;
+            max-width: 605px; /* Fixed width as specified */
+        }
+        
+        .hero h2 {
+            font-size: 72px;
+            font-weight: 400; /* Regular weight as specified */
+            line-height: 100px;
+            letter-spacing: -3%; /* Negative letter spacing as specified */
+        }
+        
+        .project-count {
+            font-size: 42px;
+            line-height: 62px;
+            letter-spacing: 2%; /* Letter spacing as specified */
+            font-weight: 600; /* Semibold as specified */
+            margin-bottom: 8px; /* 8px spacing as specified */
+        }
+        
+        .hero-description {
+            font-size: 24px;
+            line-height: 34px;
+            letter-spacing: -3%; /* Negative letter spacing as specified */
+            font-weight: 400; /* Regular weight */
+            color: #333;
+        }
+        
+        /* Horizontal line */
+        .divider {
+            width: 1300px;
+            max-width: 100%;
+            height: 0.4px;
+            background-color: #9C9C9C;
+            margin: 0 auto;
+        }
+        
+        /* Filters */
+        .filters-section {
+            margin: 24px 0; /* 24px space above and below as requested */
+        }
+        
+        .filters-container {
+            width: 100%;
+            max-width: 1440px;
+            height: auto;
+            min-height: 36px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .filter-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 4px 0;
+        }
+        
+        .filter-pill {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 2%;
+            font-weight: 500; /* Medium */
+            background: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .filter-pill:before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            background-color: #f0f0f0;
+            margin-right: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .filter-pill.active:before {
+            background-color: #000;
+            border-color: #000;
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 4px 0;
+        }
+        
+        .filter-control {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        .close-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 40px 15px;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            height: 360px;
+            cursor: pointer;
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-info {
+            opacity: 1;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .project-location {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        /* Clear Filter Button */
+        .clear-filter {
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .clear-filter:after {
+            content: "×";
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 18px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h2 {
+                font-size: 60px;
+                line-height: 80px;
+            }
+            
+            .project-count {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .hero-description {
+                font-size: 20px;
+                line-height: 30px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            header {
+                height: auto;
+                padding: 15px 20px;
+            }
+            
+            .nav-container {
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .main-nav {
+                display: none; /* Hide desktop navigation */
+            }
+            
+            .hamburger {
+                display: flex; /* Show hamburger menu */
+            }
+            
+            .mobile-nav {
+                display: block; /* Enable mobile navigation */
+            }
+            
+            .services {
+                margin-bottom: 0;
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo h1, .logo span {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                padding: 24px 30px;
+            }
+            
+            .hero-left {
+                margin-bottom: 20px;
+            }
+            
+            .hero-right {
+                width: 100%;
+            }
+            
+            .hero h2 {
+                font-size: 48px;
+                line-height: 64px;
+            }
+            
+            .project-count {
+                font-size: 32px;
+                line-height: 48px;
+            }
+            
+            .hero-description {
+                font-size: 18px;
+                line-height: 28px;
+            }
+            
+            .filters-container {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .filter-controls {
+                align-self: flex-end;
+            }
+            
+            .divider {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 10px 15px;
+            }
+            
+            .logo h1, .logo span {
+                font-size: 24px;
+                line-height: 32px;
+            }
+            
+            .services {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            .hero {
+                padding: 20px 15px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+                line-height: 48px;
+            }
+            
+            .project-count {
+                font-size: 28px;
+                line-height: 42px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            .filter-pill {
+                font-size: 14px;
+                line-height: 22px;
+            }
+            
+            .project-title {
+                font-size: 20px;
+            }
+            
+            .project-location {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>Starksten</h1>
+                <span>Architects</span>
+            </div>
+            
+            <div class="services">
+                Architecture + Interiors + UX Design
+            </div>
+            
+            <nav class="main-nav">
+                <div class="nav-item">
+                    <a href="#">Expertise</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#">Studio</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="active">Projects</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#">Contact</a>
+                </div>
+            </nav>
+            
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#">Expertise</a>
+        <a href="#">Studio</a>
+        <a href="#" class="active">Projects</a>
+        <a href="#">Contact</a>
+    </div>
+    
+    <!-- Overlay for Mobile Menu -->
+    <div class="overlay" id="overlay"></div>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-left">
+                <h2>We create spaces</h2>
+            </div>
+            <div class="hero-right">
+                <div class="project-count">145</div>
+                <p class="hero-description">
+                    We design innovative and meticulously crafted spaces that 
+                    blend functionality, aesthetics, and expertise to create 
+                    timeless environments.
+                </p>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <section class="filters-section">
+            <div class="filters-container" id="filtersContainer">
+                <div class="filter-pills">
+                    <button class="filter-pill active">Residential</button>
+                    <button class="filter-pill">On Going</button>
+                    <button class="filter-pill">Gurgaon</button>
+                    <button class="filter-pill">Mumbai</button>
+                    <div class="close-icon" id="closeFilters">×</div>
+                </div>
+                
+                <div class="filter-controls">
+                    <button class="filter-control">≡</button>
+                    <button class="filter-control">⊕</button>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <section class="projects-grid-section">
+            <div class="container">
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <img src="/api/placeholder/460/360" alt="Modern apartment interior with large windows">
+                        <div class="project-info">
+                            <h3 class="project-title">Nirvana Residence</h3>
+                            <p class="project-location">Gurgaon</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <img src="/api/placeholder/460/360" alt="Aerial view of modern house in forest">
+                        <div class="project-info">
+                            <h3 class="project-title">Forest Retreat</h3>
+                            <p class="project-location">Mumbai</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <img src="/api/placeholder/460/360" alt="Wooden ceiling modern home">
+                        <div class="project-info">
+                            <h3 class="project-title">Lakeside Villa</h3>
+                            <p class="project-location">Indore</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card">
+                        <img src="/api/placeholder/460/360" alt="Night view of residential building">
+                        <div class="project-info">
+                            <h3 class="project-title">Urban Oasis</h3>
+                            <p class="project-location">Delhi</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="project-card">
+                        <img src="/api/placeholder/460/360" alt="Modern concrete architecture">
+                        <div class="project-info">
+                            <h3 class="project-title">Concrete Haven</h3>
+                            <p class="project-location">Pune</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="project-card">
+                        <img src="/api/placeholder/460/360" alt="Hillside modern residence">
+                        <div class="project-info">
+                            <h3 class="project-title">Hillside Residence</h3>
+                            <p class="project-location">Shimla</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter pill functionality
+            const filterPills = document.querySelectorAll('.filter-pill');
+            const closeFilters = document.getElementById('closeFilters');
+            
+            filterPills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+            
+            closeFilters.addEventListener('click', function() {
+                const filterPills = document.querySelector('.filter-pills');
+                filterPills.style.display = 'none';
+            });
+            
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                overlay.style.display = mobileNav.classList.contains('active') ? 'block' : 'none';
+                
+                // Add animation to hamburger icon
+                const spans = this.querySelectorAll('span');
+                if(this.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close mobile menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                this.style.display = 'none';
+                
+                // Reset hamburger icon
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    overlay.style.display = 'none';
+                    
+                    // Reset hamburger icon
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
