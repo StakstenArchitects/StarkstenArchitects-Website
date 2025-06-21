@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Detail - Starksten Architects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'afacad': ['Afacad', 'sans-serif'],
+          },
+          maxWidth: {
+            '8xl': '1440px',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-afacad text-black bg-white overflow-x-hidden">
+
+<!-- MAIN CONTAINER -->
+<main class="w-full">
+
+  <!-- HERO IMAGE CONTAINER -->
+  <section id="hero-image-container" class="w-full">
+    <img src="YOUR-HERO-IMAGE.jpg" alt="Hero Image" class="w-full h-auto object-cover" />
+  </section>
+
+  <!-- PROJECT TITLE CONTAINER -->
+  <section id="project-title-container" class="max-w-8xl mx-auto px-12 py-6">
+    <h1 class="text-5xl md:text-6xl font-semibold leading-tight tracking-tighter">Residence 102</h1>
+  </section>
+
+  <!-- PROJECT DETAILS CONTAINER -->
+  <section id="project-details-container" class="max-w-8xl mx-auto px-12 py-10 border-t border-b border-gray-300">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-lg leading-7">
+      <div class="space-y-4">
+        <p><strong>Location</strong><br>Gurgaon, Haryana, India</p>
+        <p><strong>Surface</strong><br>210 m.sq.</p>
+      </div>
+      <div class="space-y-4">
+        <p><strong>Status</strong><br>In Progress</p>
+        <p><strong>Client</strong><br>Lorem Ipsum</p>
+      </div>
+      <div class="space-y-4">
+        <p><strong>Year of Completion</strong><br>2019</p>
+        <p><strong>Programmes</strong><br>Residential</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT DESCRIPTION CONTAINER -->
+  <section id="project-description-container" class="max-w-8xl mx-auto px-12 py-10">
+    <div class="text-lg leading-7 space-y-4">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Porta netus et hendrerit fringilla elementum sapien...</p>
+      <p>Aliquam et porttitor nullam at non hac lorem euismod eros venenatis maecenas.</p>
+    </div>
+  </section>
+
+  <!-- IMAGE + TEXT COMBO CONTAINER 1 -->
+  <section id="image-text-combo-container-1" class="max-w-8xl mx-auto px-12 py-10">
+    <div class="flex flex-col md:flex-row gap-8 items-center">
+      <img src="YOUR-IMAGE-1.jpg" alt="Project Image" class="w-full md:w-1/2 object-cover" />
+      <div class="text-lg leading-7 space-y-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Porta netus et hendrerit fringilla elementum sapien...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL WIDTH IMAGE CONTAINER -->
+  <section id="full-width-image-container" class="w-full py-10">
+    <img src="YOUR-FULLWIDTH-IMAGE.jpg" alt="Full Width Image" class="w-full h-auto object-cover" />
+  </section>
+
+  <!-- IMAGE + TEXT COMBO CONTAINER 2 -->
+  <section id="image-text-combo-container-2" class="max-w-8xl mx-auto px-12 py-10">
+    <div class="flex flex-col md:flex-row gap-8 items-center">
+      <img src="YOUR-IMAGE-2.jpg" alt="Project Image 2" class="w-full md:w-1/2 object-cover" />
+      <div class="text-lg leading-7 space-y-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Porta netus et hendrerit fringilla elementum sapien...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORE PROJECTS SECTION -->
+  <section id="more-projects-container" class="max-w-8xl mx-auto px-12 py-10 border-t border-gray-300">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-8">More Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Project Card 1 -->
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <img src="YOUR-MOREPROJECT-IMAGE1.jpg" alt="Project 1" class="w-full h-auto object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-medium mb-2">New Residence 1250</h3>
+          <p class="text-base">2011 - Gurgaon, Haryana, India</p>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <img src="YOUR-MOREPROJECT-IMAGE2.jpg" alt="Project 2" class="w-full h-auto object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-medium mb-2">Villa Serena</h3>
+          <p class="text-base">2023 - Shimla, India</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

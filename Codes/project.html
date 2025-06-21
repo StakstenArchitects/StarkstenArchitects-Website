@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bomb" / -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bomb" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
         tailwind.config = {
@@ -81,7 +83,27 @@
             color: #000;
             font-weight: 500;
         }
-        
+        .nav-link {
+ position: relative;
+  display: inline-block;
+  /* padding: 1rem 0; py-4 */
+  font-size: 1.25rem; /* text-xl */
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+}
+
+.nav-link.active::after {
+content: '';
+  position: absolute;
+  bottom: -1.4px; /* make it appear outside */
+  left: 0;
+  width: 100%;
+  height: 2.0px;
+  background-color: #000000;
+}
+
+
         .project-card {
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             width: 440px;
@@ -93,127 +115,123 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.15);
         }
 
-        /* Filter section styles */
-        .filter-section {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-        }
-        
-        .filter-section.open {
-            max-height: 400px;
-        }
+       /* Filter section styles */
+.filter-section {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
 
-        /* Selected filter pills */
-        .selected-filter {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            padding: 2px 4px;
-            margin: 2px;
-            font-size: 14px;
-            font-weight: 400;
-        }
+.filter-section.open {
+    max-height: 400px;
+}
 
-        .selected-filter .filter-checkbox {
-            width: 10px;
-            height: 10px;
-            background-color: #000;
-            border-radius: 1px;
-            margin-right: 8px;
-            position: relative;
-        }
+/* Selected filter pills */
+.selected-filter {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 4px 4px;
+    margin: 2px;
+    font-size: 14px;
+    font-weight: 500;
+}
 
-        .selected-filter .filter-checkbox::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 6px;
-            font-weight: bold;
-            line-height: 1;
-        }
+.selected-filter .filter-checkbox {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 1px;
+    margin-right: 8px;
+    position: relative;
+}
 
-        /* Filter section checkboxes */
-        .filter-checkbox-container {
-            width: 16px;
-            height: 16px;
-            position: relative;
-            margin-right: 16px;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+.selected-filter .filter-checkbox::after {
+    display: none; /* No tick */
+}
 
-        .filter-checkbox-inner {
-            width: 8px;
-            height: 8px;
-            background-color: #000;
-            border-radius: 1px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
+/* Filter section checkboxes */
+.filter-checkbox-container {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #000; /* Black border */
+    border-radius: 2px;
+    background-color: #fff; /* Default white background */
+    margin-right: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
 
-        .filter-checkbox-container.checked .filter-checkbox-inner {
-            opacity: 1;
-        }
+.filter-checkbox-container.checked {
+    background-color: #000; /* Filled black when selected */
+}
 
-        .filter-option {
-            display: flex;
-            align-items: center;
-            padding: 4px 8px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-            width: 120px; /* Fixed width for all checkboxes */
-        }
+/* No inner element needed now */
+.filter-checkbox-inner {
+    display: none;
+}
 
-        .filter-option:hover {
-            background-color: #f9fafb;
-        }
+/* Filter option styles */
+.filter-option {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 400;
+}
 
-        .filter-header {
-            width: 375px;
-            padding: 10px 16px;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 40px;
-            border-bottom: 1px solid #000;
-            flex-shrink: 0;
-        }
+.filter-option:hover {
+    background-color: #f9fafb;
+}
 
-        .filter-options-container {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding: 10px 16px;
-        }
+.filter-header {
+    width: 375px;
+    padding: 10px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 34px;
+    border-bottom: 1px solid #000;
+    flex-shrink: 0;
+}
 
-        .filter-row {
-            display: flex;
-            align-items: flex-start;
-            border-bottom: 1px solid #000;
-        }
+.filter-options-container {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 4px 8px;
+}
 
-        .filter-row:last-child {
-            border-bottom: none;
-        }
+.filter-row {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #000;
+}
+
+.filter-row:last-child {
+    border-bottom: none;
+}
 
         /* Responsive lines with 40px padding */
         .responsive-line {
             height: 0.4px;
             background-color: rgb(156, 163, 175);
-            margin: 0 40px;
+            margin: 0 30px;
         }
-
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24
+}
         /* Footer styles */
         .footer-container {
             background-color: white;
@@ -323,7 +341,7 @@
         flex: 1;
         display: flex;
         flex-wrap: wrap;
-        gap: 24px;
+        gap: 16px;
     }
 
     .filter-option {
@@ -364,9 +382,14 @@
 <span class="font-normal italic text-3xl leading-10 tracking-wider">Architects</span>
 </div>
 <!-- HEADER TAGLINE CONTAINER -->
-<div class="text-xl leading-7 tracking-tighter font-normal" id="header-tagline-container">
-                Architecture + Interiors + UX Design
-            </div>
+<div class="text-xl leading-7 tracking-tighter font-normal flex items-center " id="header-tagline-container">
+    Architecture + Interiors + UX Design
+    <img src="C:\Users\kaushkis1\Downloads\bomb.svg" alt="bomb icon" class="w-7 h-7 ml-1 material-symbols-outlined" />
+</div>
+
+
+
+
 <!-- DESKTOP NAVIGATION CONTAINER -->
 <nav class="hidden md:flex gap-3 lg:gap-3 flex-wrap" id="desktop-nav-container">
 <div class="w-[90px] px-2 text-center nav-item">
@@ -376,7 +399,7 @@
 <a class="text-xl leading-7 tracking-tighter font-normal block w-full" href="#">Studio</a>
 </div>
 <div class="w-[90px] px-2 text-center nav-item active">
-<a class="text-xl leading-7 tracking-tighter font-medium block w-full" href="#">Projects</a>
+<a class="text-xl leading-7 tracking-tighter font-medium block w-full nav-link active " href="#">Projects</a>
 </div>
 <div class="w-[90px] px-2 text-center nav-item">
 <a class="text-xl leading-7 tracking-tighter font-normal block w-full" href="#">Contact</a>
@@ -409,35 +432,42 @@
 <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden" id="overlay"></div>
 <main id="main-container">
 <!-- HERO SECTION CONTAINER -->
-<section class="flex p-6 md:p-12 justify-between flex-wrap" id="hero-section-container">
-<div class="self-start" id="hero-title-container">
-<h2 class="text-6xl md:text-7xl font-normal leading-tight md:leading-[100px] tracking-tighter">We create spaces</h2>
-</div>
-<div class="w-full lg:max-w-[605px]" id="hero-content-container">*
-<div class="text-4xl leading-[62px] tracking-wider font-semibold mb-2">145</div>
-<p class="text-2xl leading-8 tracking-tighter font-normal text-gray-700">
-                    We design innovative and meticulously crafted spaces that 
-                    blend functionality, aesthetics, and expertise to create 
-                    timeless environments.
-                </p>
-</div>
+<section 
+  class="flex p-6 md:p-12 justify-between flex-wrap border-t-0 border-b-0 shadow-none" 
+  id="hero-section-container"
+  style="border-top: none; box-shadow: none;"
+>
+  <div class="self-start" id="hero-title-container">
+    <h2 class="text-6xl md:text-7xl font-normal leading-tight md:leading-[100px] tracking-tighter">
+      We create spaces
+    </h2>
+  </div>
+  <div class="w-full lg:max-w-[605px]" id="hero-content-container">
+    <div class="text-[2.75rem] leading-[62px] tracking-wider font-semibold mb-2">145</div>
+    <p class="text-2xl leading-[2rem] tracking-tighter font-normal text-gray-700">
+      We design innovative and meticulously crafted spaces that 
+      blend functionality, aesthetics, and expertise to create 
+      timeless environments.
+    </p>
+  </div>
 </section>
+
 <div class="responsive-line"></div>
 <!-- FILTER CONTROLS SECTION CONTAINER -->
-<section class="py-6" id="filter-controls-section">
-<div class="w-full max-w-8xl mx-auto px-8 flex items-center justify-between flex-wrap" id="filter-controls-wrapper">
-<div class="flex gap-2 flex-wrap py-1" id="selected-filters-container">
-<!-- Selected filters will appear here dynamically -->
-</div>
-<div class="flex gap-4 items-center py-1" id="filter-buttons-container">
-<button id="search-toggle-button" class="max-w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer rounded">
-  <img src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\icons\Search_projects.svg" alt="Search Icon" class="w-8 h-8">
-</button>
-<button class="w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer rounded" id="filter-toggle-button">
-  <img src="C:\Users\prakr\OneDrive\Desktop\Website\Final_Screens\icons\Filter_projects.svg" alt="Filter" class="w-8 h-8">
-</button>
-</div>
-</div>
+<section class="px-[48px] py-0" id="filter-controls-section">
+    <div class="w-full max-w-8xl mx-auto px-8 flex items-center justify-between flex-wrap" id="filter-controls-wrapper">
+        <div class="flex gap-3 flex-wrap py-1" id="selected-filters-container">
+            <!-- Selected filters will appear here dynamically -->
+        </div>
+        <div class="flex gap-4 items-center py-1" id="filter-buttons-container">
+            <button id="search-toggle-button" class="max-w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer rounded">
+                <img src="./Final_Screens/icons/Search_projects.svg" alt="Search Icon" class="w-8 h-8">
+            </button>
+            <button class="w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer rounded" id="filter-toggle-button">
+                <img src="./Final_Screens/icons/Filter_projects.svg" alt="Filter" class="w-8 h-8">
+            </button>
+        </div>
+    </div>
 </section>
 <!-- FILTER SECTION CONTAINER -->
 <div class="filter-section bg-gray-50" id="filter-section-container">
@@ -548,17 +578,12 @@
 </div>
 <div class="responsive-line"></div>
 <!-- PROJECTS SECTION CONTAINER -->
-<div class="filter-section bg-gray-50" id="search-section-container">
-<div class="w-full max-w-8xl mx-auto p-4">
-<input class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black text-lg" id="project-search-input" placeholder="Search projects..." type="text"/>
-</div>
-</div>
 <section class="py-10" id="projects-section-container">
 <div class="projects-grid-container" id="projects-grid-container">
 <!-- FIRST ROW OF PROJECTS -->
 <div class="projects-row">
 <!-- Project 1 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-1">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-1" data-discipline="Residential" data-status="Completed" data-region="Gurgaon" data-title="Nirvana Residence">
 <img alt="Modern apartment interior with large windows" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/1.png?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Nirvana Residence</h3>
@@ -566,7 +591,7 @@
 </div>
 </div>
 <!-- Project 2 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-2">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-2" data-discipline="Residential" data-status="On Going" data-region="Mumbai" data-title="Forest Retreat">
 <img alt="Aerial view of modern house in forest" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/2.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Forest Retreat</h3>
@@ -574,7 +599,7 @@
 </div>
 </div>
 <!-- Project 3 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-3">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-3" data-discipline="Landscape" data-status="Completed" data-region="New Delhi" data-title="Lakeside Villa">
 <img alt="Wooden ceiling modern home" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/3.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Lakeside Villa</h3>
@@ -585,7 +610,7 @@
 <!-- SECOND ROW OF PROJECTS -->
 <div class="projects-row">
 <!-- Project 4 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-4">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-4" data-discipline="Workspace" data-status="On Going" data-region="New Delhi" data-title="Urban Oasis">
 <img alt="Night view of residential building" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/4.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Urban Oasis</h3>
@@ -593,7 +618,7 @@
 </div>
 </div>
 <!-- Project 5 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-5">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-5" data-discipline="Interiors" data-status="Completed" data-region="Pune" data-title="Concrete Haven">
 <img alt="Modern concrete architecture" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/5.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Concrete Haven</h3>
@@ -601,7 +626,7 @@
 </div>
 </div>
 <!-- Project 6 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-6">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-6" data-discipline="Hospitality" data-status="On Going" data-region="Chennai" data-title="Hillside Residence">
 <img alt="Hillside modern residence" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/6.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Hillside Residence</h3>
@@ -612,7 +637,7 @@
 <!-- THIRD ROW OF PROJECTS -->
 <div class="projects-row">
 <!-- Project 7 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-7">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-7" data-discipline="Residential" data-status="Completed" data-region="Mumbai" data-title="Contemporary Villa">
 <img alt="Contemporary villa design" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/7.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Contemporary Villa</h3>
@@ -620,7 +645,7 @@
 </div>
 </div>
 <!-- Project 8 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-8">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-8" data-discipline="Workspace" data-status="On Going" data-region="Gurgaon" data-title="Minimalist House">
 <img alt="Minimalist house design" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/8.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Minimalist House</h3>
@@ -628,7 +653,7 @@
 </div>
 </div>
 <!-- Project 9 -->
-<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-9">
+<div class="project-card relative overflow-hidden cursor-pointer rounded-lg" id="project-card-9" data-discipline="Landscape" data-status="Completed" data-region="Pune" data-title="Garden Residence">
 <img alt="Garden view residence" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="https://github.com/StakstenArchitects/StarkstenArchitects-Website/blob/main/Images/projects/9.jpg?raw=true"/>
 <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
 <h3 class="text-2xl font-medium mb-1">Garden Residence</h3>
@@ -770,6 +795,22 @@
     gap: 8px;
     cursor: pointer;
 }
+
+.selected-filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.remove-filter-button {
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.clear-all-button {
+  margin-left: 16px;
+  cursor: pointer;
+}
 </style>
 <!-- JavaScript for Back to Top functionality -->
 <script>
@@ -778,178 +819,566 @@ function scrollToTop() {
         top: 0,
         behavior: 'smooth'
     });
+
 }
 </script>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter State Management - START WITH NO FILTERS
+    let filterPanelOpen = false;
+    let searchPanelOpen = false;
+    let searchQuery = '';
+    let activeFilters = {
+        discipline: [], // Start empty - no default filters
+        status: [],     // Start empty - no default filters
+        region: []      // Start empty - no default filters
+    };
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterToggle = document.getElementById('filter-toggle-button');
-            const filterSection = document.getElementById('filter-section-container');
-            const selectedFiltersContainer = document.getElementById('selected-filters-container');
-            const filterOptions = document.querySelectorAll('.filter-option');
+    // Store original cards for rebuilding
+    let originalCards = [];
+
+    // DOM Elements - Using YOUR actual element IDs
+    const filterToggle = document.getElementById('filter-toggle-button');
+    const searchToggle = document.getElementById('search-toggle-button');
+    const filterPanel = document.getElementById('filter-section-container');
+    const searchPanel = document.getElementById('search-section-container');
+    const searchInput = document.getElementById('project-search-input');
+    const selectedFiltersContainer = document.getElementById('selected-filters-container');
+    const projectsGridContainer = document.getElementById('projects-grid-container');
+
+    // Store original cards on page load
+    if (projectsGridContainer) {
+        originalCards = Array.from(projectsGridContainer.querySelectorAll('.project-card')).map(card => ({
+            element: card.cloneNode(true),
+            discipline: card.dataset.discipline,
+            status: card.dataset.status,
+            region: card.dataset.region,
+            title: card.dataset.title || card.querySelector('h3, .project-title')?.textContent || '',
+            description: card.querySelector('p, .project-description')?.textContent || '',
+            location: card.querySelector('.project-location')?.textContent || ''
+        }));
+    }
+
+    // Add CSS for filter functionality
+    const style = document.createElement('style');
+    style.textContent = `
+        .toggle-button.active {
+            background-color: #000;
+        }
+        .toggle-button.active img {
+            filter: invert(1);
+        }
+        .filter-tag {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin: 2px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .filter-tag-checkbox {
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            border-radius: 1px;
+            margin-right: 8px;
+        }
+        .filter-tag-remove {
+            margin-left: 8px;
+            color: #6b7280;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .filter-tag-remove:hover {
+            color: #000;
+        }
+        .clear-all-button {
+            margin-left: 16px;
+            cursor: pointer;
+            padding: 4px 8px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .clear-all-button:hover {
+            background: #e5e7eb;
+        }
+        
+        /* Search panel styles */
+        #search-section-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        #search-section-container.open {
+            max-height: 200px;
+            padding: 20px 44px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Ensure proper grid layout */
+        .projects-grid-container {
+            padding: 0 44px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .projects-row {
+            display: flex;
+            justify-content: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .project-card {
+            width: 440px;
+            height: 220px;
+            flex-shrink: 0;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Create search panel if it doesn't exist
+    function createSearchPanel() {
+        if (!searchPanel && projectsGridContainer) {
+            const newSearchPanel = document.createElement('div');
+            newSearchPanel.id = 'search-section-container';
+            newSearchPanel.innerHTML = `
+                <div class="search-container">
+                    <input type="text" id="project-search-input" class="search-input" placeholder="Search projects..." />
+                </div>
+            `;
+            projectsGridContainer.parentNode.insertBefore(newSearchPanel, projectsGridContainer);
             
-            let selectedFilters = {
-                discipline: ['Residential'],
-                status: ['On Going'],
-                region: ['Gurgaon']
-            };
+            // Update references
+            const newSearchInput = document.getElementById('project-search-input');
+            if (newSearchInput) {
+                newSearchInput.addEventListener('input', handleSearchInput);
+            }
+        }
+    }
 
-            // Initialize selected filters display
-            updateSelectedFiltersDisplay();
+    // Toggle Functions - NO ROTATION
+    function toggleFilter() {
+        if (searchPanelOpen) {
+            closeSearch();
+        }
+        
+        filterPanelOpen = !filterPanelOpen;
+        
+        if (filterPanelOpen) {
+            if (filterPanel) {
+                filterPanel.classList.add('open');
+            }
+            if (filterToggle) {
+                filterToggle.classList.add('active');
+            }
+        } else {
+            if (filterPanel) {
+                filterPanel.classList.remove('open');
+            }
+            if (filterToggle) {
+                filterToggle.classList.remove('active');
+            }
+        }
+    }
 
-            // Toggle filter section
-            filterToggle.addEventListener('click', function() {
-                filterSection.classList.toggle('open');
-                
-                // Rotate the filter icon
-                if (filterSection.classList.contains('open')) {
-                    filterToggle.style.transform = 'rotate(90deg)';
-                } else {
-                    filterToggle.style.transform = 'rotate(0deg)';
-                }
-            });
+    function toggleSearch() {
+        // Create search panel if it doesn't exist
+        createSearchPanel();
+        
+        if (filterPanelOpen) {
+            closeFilter();
+        }
+        
+        searchPanelOpen = !searchPanelOpen;
+        
+        const currentSearchPanel = document.getElementById('search-section-container');
+        const currentSearchInput = document.getElementById('project-search-input');
+        
+        if (searchPanelOpen) {
+            if (currentSearchPanel) {
+                currentSearchPanel.classList.add('open');
+            }
+            if (searchToggle) {
+                searchToggle.classList.add('active');
+            }
+            if (currentSearchInput) {
+                setTimeout(() => currentSearchInput.focus(), 300);
+            }
+        } else {
+            if (currentSearchPanel) {
+                currentSearchPanel.classList.remove('open');
+            }
+            if (searchToggle) {
+                searchToggle.classList.remove('active');
+            }
+        }
+    }
 
-            // Handle filter option clicks
-            filterOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    const value = this.dataset.value;
-                    const checkbox = this.querySelector('.filter-checkbox-container');
-                    
-                    if (checkbox.classList.contains('checked')) {
-                        // Uncheck
-                        checkbox.classList.remove('checked');
-                        selectedFilters[category] = selectedFilters[category].filter(item => item !== value);
-                    } else {
-                        // Check
-                        checkbox.classList.add('checked');
-                        if (!selectedFilters[category].includes(value)) {
-                            selectedFilters[category].push(value);
-                        }
-                    }
-                    
-                    updateSelectedFiltersDisplay();
-                });6
-            });
+    function closeFilter() {
+        filterPanelOpen = false;
+        if (filterPanel) {
+            filterPanel.classList.remove('open');
+        }
+        if (filterToggle) {
+            filterToggle.classList.remove('active');
+        }
+    }
 
-            function updateSelectedFiltersDisplay() {
-                selectedFiltersContainer.innerHTML = '';
-                
-                // Combine all selected filters
-                const allSelected = [];
-                Object.keys(selectedFilters).forEach(category => {
-                    selectedFilters[category].forEach(value => {
-                        allSelected.push({ category, value });
-                    });
+    function closeSearch() {
+        searchPanelOpen = false;
+        const currentSearchPanel = document.getElementById('search-section-container');
+        if (currentSearchPanel) {
+            currentSearchPanel.classList.remove('open');
+        }
+        if (searchToggle) {
+            searchToggle.classList.remove('active');
+        }
+    }
+
+    // Filter Management - Create new arrays instead of mutating existing ones
+    function handleFilterClick(category, value) {
+        const currentArray = activeFilters[category];
+        const index = currentArray.indexOf(value);
+        
+        if (index > -1) {
+            // Remove the value by creating a new array without it
+            activeFilters[category] = currentArray.filter(item => item !== value);
+        } else {
+            // Add the value by creating a new array with it
+            activeFilters[category] = [...currentArray, value];
+        }
+        
+        updateFilterUI();
+        updateActiveFiltersDisplay();
+        applyFilters();
+    }
+
+    // Update checkboxes properly
+    function updateFilterUI() {
+        // Update all checkboxes in filter options
+        document.querySelectorAll('.filter-option').forEach(option => {
+            const category = option.dataset.category;
+            const value = option.dataset.value;
+            const checkbox = option.querySelector('.filter-checkbox-container');
+            
+            if (checkbox && activeFilters[category] && activeFilters[category].includes(value)) {
+                checkbox.classList.add('checked');
+            } else if (checkbox) {
+                checkbox.classList.remove('checked');
+            }
+        });
+
+        // Also update any HTML checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            const category = checkbox.dataset.category || checkbox.name;
+            const value = checkbox.dataset.value || checkbox.value;
+            
+            if (category && value && activeFilters[category]) {
+                checkbox.checked = activeFilters[category].includes(value);
+            }
+        });
+    }
+
+    function updateActiveFiltersDisplay() {
+        if (!selectedFiltersContainer) return;
+        
+        selectedFiltersContainer.innerHTML = '';
+        let hasActiveFilters = false;
+
+        // Add search tag if there's a search query
+        if (searchQuery.trim()) {
+            hasActiveFilters = true;
+            const searchTag = createFilterTag('search', searchQuery, `Search: "${searchQuery}"`);
+            selectedFiltersContainer.appendChild(searchTag);
+        }
+
+        // Add filter tags if no search query
+        if (!searchQuery.trim()) {
+            Object.entries(activeFilters).forEach(([category, values]) => {
+                values.forEach(value => {
+                    hasActiveFilters = true;
+                    const tag = createFilterTag(category, value, value);
+                    selectedFiltersContainer.appendChild(tag);
                 });
+            });
+        }
 
-                // Create filter pills
-                allSelected.forEach(filter => {
-                    const pill = document.createElement('div');
-                    pill.className = 'selected-filter';
-                    pill.innerHTML = `
-                        <div class="filter-checkbox"></div>
-                        ${filter.value}
-                    `;
-                    
-                    // Add click handler to remove filter
-                    pill.addEventListener('click', function() {
-                        // Remove from selectedFilters
-                        selectedFilters[filter.category] = selectedFilters[filter.category].filter(item => item !== filter.value);
-                        
-                        // Update checkbox in filter section
-                        const filterOption = document.querySelector(`.filter-option[data-category="${filter.category}"][data-value="${filter.value}"]`);
-                        if (filterOption) {
-                            const checkbox = filterOption.querySelector('.filter-checkbox-container');
-                            checkbox.classList.remove('checked');
-                        }
-                        
-                        updateSelectedFiltersDisplay();
-                    });
-                    
-                    selectedFiltersContainer.appendChild(pill);
-                });
+        // Add clear all button if there are active filters
+        if (hasActiveFilters) {
+            const clearAllBtn = document.createElement('button');
+            clearAllBtn.className = 'clear-all-button';
+            clearAllBtn.textContent = 'Clear Filter';
+            clearAllBtn.addEventListener('click', clearAllFilters);
+            selectedFiltersContainer.appendChild(clearAllBtn);
+        }
+    }
+
+    function createFilterTag(category, value, displayText) {
+        const tag = document.createElement('div');
+        tag.className = 'filter-tag';
+        
+        tag.innerHTML = `
+            <div class="filter-tag-checkbox"></div>
+            ${displayText}
+            <span class="filter-tag-remove" data-category="${category}" data-value="${value}">✕</span>
+        `;
+        
+        // Add click handler for remove button
+        const removeBtn = tag.querySelector('.filter-tag-remove');
+        removeBtn.addEventListener('click', () => {
+            if (category === 'search') {
+                clearSearch();
+            } else {
+                removeFilter(category, value);
+            }
+        });
+        
+        return tag;
+    }
+
+    // Remove filter - Create new array instead of mutating
+    function removeFilter(category, value) {
+        const currentArray = activeFilters[category];
+        // Create new array without the removed value
+        activeFilters[category] = currentArray.filter(item => item !== value);
+        updateFilterUI();
+        updateActiveFiltersDisplay();
+        applyFilters();
+    }
+
+    // Clear all filters - Reset to completely new empty arrays
+    function clearAllFilters() {
+        activeFilters = {
+            discipline: [],
+            status: [],
+            region: []
+        };
+        searchQuery = '';
+        
+        const currentSearchInput = document.getElementById('project-search-input');
+        if (currentSearchInput) {
+            currentSearchInput.value = '';
+        }
+        
+        // Force update all UI elements
+        updateFilterUI();
+        updateActiveFiltersDisplay();
+        applyFilters();
+        
+        // Additional cleanup - uncheck all checkboxes manually
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        
+        document.querySelectorAll('.filter-checkbox-container').forEach(checkbox => {
+            checkbox.classList.remove('checked');
+        });
+    }
+
+    // Search Management
+    function handleSearchInput() {
+        const currentSearchInput = document.getElementById('project-search-input');
+        if (!currentSearchInput) return;
+        
+        searchQuery = currentSearchInput.value;
+        updateActiveFiltersDisplay();
+        applyFilters();
+    }
+
+    function clearSearch() {
+        searchQuery = '';
+        const currentSearchInput = document.getElementById('project-search-input');
+        if (currentSearchInput) {
+            currentSearchInput.value = '';
+        }
+        updateActiveFiltersDisplay();
+        applyFilters();
+    }
+
+    // Apply Filters - Rebuild grid with proper layout
+    function applyFilters() {
+        if (!projectsGridContainer || originalCards.length === 0) return;
+
+        // Filter the original cards
+        const filteredCards = originalCards.filter(cardData => {
+            let shouldShow = true;
+            
+            // Apply search filter (overrides other filters)
+            if (searchQuery.trim()) {
+                const searchText = searchQuery.toLowerCase();
+                
+                const matches = cardData.title.toLowerCase().includes(searchText) ||
+                              cardData.description.toLowerCase().includes(searchText) ||
+                              cardData.location.toLowerCase().includes(searchText);
+                
+                shouldShow = matches;
+            } else {
+                // Apply category filters using data attributes
+                const cardDiscipline = cardData.discipline;
+                const cardStatus = cardData.status;
+                const cardRegion = cardData.region;
+                
+                // If no filters are selected in a category, show all cards for that category
+                const disciplineMatch = activeFilters.discipline.length === 0 || activeFilters.discipline.includes(cardDiscipline);
+                const statusMatch = activeFilters.status.length === 0 || activeFilters.status.includes(cardStatus);
+                const regionMatch = activeFilters.region.length === 0 || activeFilters.region.includes(cardRegion);
+                
+                // Card should show only if it matches ALL filter categories
+                shouldShow = disciplineMatch && statusMatch && regionMatch;
             }
             
-            // Hamburger menu functionality
-            const hamburger = document.getElementById('hamburger');
-            const mobileNav = document.getElementById('mobile-nav-container');
-            const overlay = document.getElementById('overlay');
+            return shouldShow;
+        });
+
+        // Rebuild the grid with filtered cards
+        rebuildGrid(filteredCards);
+    }
+
+    // Rebuild grid with proper layout (3 cards per row)
+    function rebuildGrid(filteredCards) {
+        // Clear the current grid
+        projectsGridContainer.innerHTML = '';
+        
+        // If no cards are visible, show a message
+        if (filteredCards.length === 0) {
+            const noResultsDiv = document.createElement('div');
+            noResultsDiv.className = 'text-center py-12';
+            noResultsDiv.innerHTML = '<p class="text-lg text-gray-600">No projects found matching your criteria.</p>';
+            projectsGridContainer.appendChild(noResultsDiv);
+            return;
+        }
+        
+        // Create rows with exactly 3 cards each
+        for (let i = 0; i < filteredCards.length; i += 3) {
+            const row = document.createElement('div');
+            row.className = 'projects-row';
             
-            hamburger.addEventListener('click', function() {
-                const spans = this.querySelectorAll('span');
+            // Add up to 3 cards to this row
+            for (let j = 0; j < 3 && (i + j) < filteredCards.length; j++) {
+                const cardData = filteredCards[i + j];
+                const cardClone = cardData.element.cloneNode(true);
+                row.appendChild(cardClone);
+            }
+            
+            projectsGridContainer.appendChild(row);
+        }
+    }
+
+    // Event Listeners
+    if (filterToggle) filterToggle.addEventListener('click', toggleFilter);
+    if (searchToggle) searchToggle.addEventListener('click', toggleSearch);
+    
+    // Add search input listener if it exists initially
+    if (searchInput) {
+        searchInput.addEventListener('input', handleSearchInput);
+    }
+
+    // Add click handlers for filter options
+    document.querySelectorAll('.filter-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const category = option.dataset.category;
+            const value = option.dataset.value;
+            handleFilterClick(category, value);
+        });
+    });
+
+    // Add click handlers for any existing checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const category = checkbox.dataset.category || checkbox.name || 
+                           (checkbox.closest('[data-category]')?.dataset.category);
+            const value = checkbox.dataset.value || checkbox.value || 
+                         checkbox.nextElementSibling?.textContent?.trim();
+            
+            if (category && value) {
+                handleFilterClick(category, value);
+            }
+        });
+    });
+
+    // Initialize - START WITH ALL PROJECTS VISIBLE
+    updateFilterUI();
+    updateActiveFiltersDisplay();
+    applyFilters();
+
+    // Keep existing hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav-container');
+    const overlay = document.getElementById('overlay');
+    
+    if (hamburger && mobileNav && overlay) {
+        hamburger.addEventListener('click', function() {
+            const spans = this.querySelectorAll('span');
+            
+            if (mobileNav.classList.contains('-right-full')) {
+                mobileNav.classList.remove('-right-full');
+                mobileNav.classList.add('right-0');
+                overlay.classList.remove('hidden');
                 
-                if (mobileNav.classList.contains('-right-full')) {
-                    mobileNav.classList.remove('-right-full');
-                    mobileNav.classList.add('right-0');
-                    overlay.classList.remove('hidden');
-                    
-                    // Animate hamburger to X
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-                } else {
-                    mobileNav.classList.add('-right-full');
-                    mobileNav.classList.remove('right-0');
-                    overlay.classList.add('hidden');
-                    
-                    // Reset hamburger icon
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
-            
-            // Close mobile menu when clicking on overlay
-            overlay.addEventListener('click', function() {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
                 mobileNav.classList.add('-right-full');
                 mobileNav.classList.remove('right-0');
-                this.classList.add('hidden');
+                overlay.classList.add('hidden');
                 
-                // Reset hamburger icon
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        overlay.addEventListener('click', function() {
+            mobileNav.classList.add('-right-full');
+            mobileNav.classList.remove('right-0');
+            this.classList.add('hidden');
+            
+            const spans = hamburger.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        });
+        
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.add('-right-full');
+                mobileNav.classList.remove('right-0');
+                overlay.classList.add('hidden');
+                
                 const spans = hamburger.querySelectorAll('span');
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             });
-            
-            // Close mobile menu when clicking on a link
-            const mobileNavLinks = mobileNav.querySelectorAll('a');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.add('-right-full');
-                    mobileNav.classList.remove('right-0');
-                    overlay.classList.add('hidden');
-                    
-                    // Reset hamburger icon
-                    const spans = hamburger.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                });
-            });
-
-            // Back to top functionality
-            const backToTopButton = document.getElementById('footer-back-to-top-container');
-            backToTopButton.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
         });
-    
-        const searchToggle = document.getElementById('search-toggle-button');
-        const searchSection = document.getElementById('search-section-container');
-
-        searchToggle.addEventListener('click', function () {
-            searchSection.classList.toggle('open');
-            if (searchSection.classList.contains('open')) {
-                searchToggle.style.transform = 'rotate(90deg)';
-            } else {
-                searchToggle.style.transform = 'rotate(0deg)';
-            }
-        });
-        </script>
+    }
+});
+</script>
 </body>
 </html>
